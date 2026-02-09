@@ -2,6 +2,8 @@
 
 Simple weather by city using Open-Meteo (no API key).
 
+Live (GitHub Pages): https://mrsnoopy14.github.io/weather.12/
+
 ## Run locally
 
 ```bash
@@ -9,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Open: http://localhost:5173/
+Open: http://127.0.0.1:5173/
 
 ## Build
 
