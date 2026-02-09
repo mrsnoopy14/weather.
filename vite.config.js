@@ -6,9 +6,9 @@ export default defineConfig(({ command }) => ({
   // Use relative asset paths for production builds (works on GitHub Pages sub-paths)
   base: command === 'build' ? './' : '/',
   server: {
-    host: '::',
+    host: '127.0.0.1',
     port: 5173,
-    strictPort: false,
+    strictPort: true,
     open: true,
   },
 }))
