@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 import { searchCity, getForecast } from './api/openMeteo.js'
 import { formatPrecip, formatTemp, formatVisibility, toCompass } from './utils/format.js'
 import { weatherCodeToText, isFogCode } from './utils/weatherCodes.js'
-import WeatherScene from './components/WeatherScene.jsx'
 
 function LocationTitle({ place }) {
   if (!place) return null
@@ -63,34 +62,14 @@ export default function App() {
   }
 
   return (
-    <div className="app">
-      <WeatherScene current={current} />
+    <div className="page">
+      <header className="header">
+        <h1 className="h1">Simple Weather App</h1>
+        <p className="muted">Search a city to get live temperature, wind, fog/visibility and precipitation.</p>
+        {place ? <LocationTitle place={place} /> : null}
+      </header>
 
-      <div className="page">
-        <header className="hero">
-          <div>
-            <div className="kicker">Live Weather</div>
-            <h1 className="title">Forecast</h1>
-            <p className="muted">Type a city and get temperature, wind, fog/visibility, and precipitation.</p>
-            {place ? <LocationTitle place={place} /> : null}
-          </div>
-
-          <div className="heroStat card card-tilt">
-            <div className="heroTemp">{current ? formatTemp(current.temperature_2m) : '—'}</div>
-            <div className="heroCond">{current ? weatherCodeToText(current.weather_code) : 'Search a city'}</div>
-            <div className="heroSub muted">
-              {current ? (
-                <>
-                  Feels like {formatTemp(current.apparent_temperature)} • Wind {Math.round(current.wind_speed_10m)} km/h
-                </>
-              ) : (
-                <>Open‑Meteo live conditions • No API key</>
-              )}
-            </div>
-          </div>
-        </header>
-
-        <section className="card card-tilt">
+      <section className="card">
           <form className="form" onSubmit={onSubmit}>
             <label className="label" htmlFor="city">City</label>
             <div className="row">
@@ -131,7 +110,7 @@ export default function App() {
         </section>
 
       {daily ? (
-        <section className="card card-tilt">
+        <section className="card">
           <h2 className="h2">7‑Day Forecast</h2>
           <div className="daily">
             {daily.time.map((t, i) => (
@@ -150,10 +129,7 @@ export default function App() {
         </section>
       ) : null}
 
-        <footer className="footer muted">
-          Data by Open‑Meteo (no API key). Background reacts to live weather (snow/rain/fog).
-        </footer>
-      </div>
+      <footer className="footer muted">Data by Open‑Meteo (no API key).</footer>
     </div>
   )
 }

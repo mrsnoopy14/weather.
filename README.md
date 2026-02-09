@@ -1,6 +1,6 @@
-# Weather Forecast (React + ES6)
+# Simple Weather App (React + ES6)
 
-Live weather by city using Open-Meteo (no API key).
+Simple weather by city using Open-Meteo (no API key).
 
 ## Run locally
 
